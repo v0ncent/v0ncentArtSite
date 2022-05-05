@@ -1,0 +1,9 @@
+-TODO
+
+smaller the better
+ draw:
+     v0ncent logo png
+     site background jpg
+     menu buttons png
+     arrrow buttons png
+     
