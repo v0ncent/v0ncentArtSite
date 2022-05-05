@@ -9,6 +9,7 @@ function GalleryPage() {
       <Paper sx={{ p: 5 }}>
         <HeaderComponent />
         <MenuComponent />
+        {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
         <Typography>galleryPage</Typography>
       </Paper>
     </Box>
