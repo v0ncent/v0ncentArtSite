@@ -18,10 +18,12 @@ function AboutPage() {
         <MenuComponent />
         <Box sx={{ p: 4 }} textAlign={"left"}>
           <Typography variant="h4">
-            this is a bio or something
+          {/* TODO: add a image for self portrait next to bio */}
+            Hello! My name is Vincent Banks, I am a self taught artist and computer programmer. I enjoy creating grotesque style pieces and 
+            comics. You can check out my other links below to see more of my work!
             <br />
+            I hope this site finds you well and you have enjoyed a platform to share your work!
             <br />
-            Email:
             <br />
             GitHub:{" "}
             <a
@@ -41,7 +43,6 @@ function AboutPage() {
               @v0ncent
             </a>
             <br />
-            other links:
           </Typography>
         </Box>
       </Paper>
