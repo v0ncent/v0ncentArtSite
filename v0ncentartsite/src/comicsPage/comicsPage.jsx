@@ -1,9 +1,18 @@
-function comicsPage() {
+import { Box, Paper, Typography } from "@mui/material";
+import MenuComponent from "../MenuComponent/MenuComponent";
+//Import react
+import { useNavigate } from "react-router-dom";
+
+function ComicsPage() {
+  const navigate = useNavigate();
   return (
-    <>
-      <p>comicsPage</p>
-    </>
+    <Box bgcolor="#000000" sx={{ p: 8 }}>
+      <Paper sx={{ p: 5 }}>
+        <Typography onClick={() => navigate("/")}>comicsPage</Typography>
+        <MenuComponent />
+      </Paper>
+    </Box>
   );
 }
 
-export default comicsPage;
+export default ComicsPage;

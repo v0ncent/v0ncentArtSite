@@ -6,15 +6,15 @@ import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Import all pages to route to
-import AboutPage from "./aboutPage/aboutPage.jsx";
-import ForumPage from "./forumPage/forumPage.jsx";
-import ComicsPage from "./comicsPage/comicsPage.jsx";
-import LandingPage from "./landingPage/landingPage.jsx";
-import GalleryPage from "./galleryPage/galleryPage.jsx";
+import AboutPage from "./AboutPage/AboutPage.jsx";
+import ForumPage from "./ForumPage/ForumPage.jsx";
+import ComicsPage from "./ComicsPage/ComicsPage.jsx";
+import LandingPage from "./LandingPage/LandingPage.jsx";
+import GalleryPage from "./GalleryPage/GalleryPage.jsx";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -28,7 +28,7 @@ function App() {
           <Route path="/gallery" element={<GalleryPage />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
