@@ -1,6 +1,17 @@
 import { useState, useEffect } from "react";
+import mongoose from "mongoose";
 
 export default function UploadTest() {
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
+
+const ImgUp = new Schema({
+  title: String,
+  image: String,
+});
+
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
 
