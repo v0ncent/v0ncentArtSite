@@ -7,7 +7,8 @@ import MenuComponent from "../menuComponent/MenuComponent.jsx";
 import HeaderComponent from "../HeaderComponent/HeaderComponent.jsx";
 import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 
-import Create from "../creatE/creatE" 
+import Create from "../creatE/creatE";
+import UploadTest from "../UploadTest/UploadTest.jsx" 
 
 function LandingPage() {
   return (
@@ -24,6 +25,7 @@ function LandingPage() {
             <Box sx={{ p: 1, border: 1 }}>
               <AnnouncementsPage />
               <Create />
+              <UploadTest />
             </Box>
             <br />
             <Box sx={{ p: 1, border: 1 }}>
