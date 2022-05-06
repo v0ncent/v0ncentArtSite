@@ -1,5 +1,5 @@
 import { Box, Paper, Typography } from "@mui/material";
-import MenuComponent from "../MenuComponent/MenuComponent";
+import MenuComponent from "../menuComponent/MenuComponent";
 import HeaderComponent from "../HeaderComponent/HeaderComponent";
 
 function ForumPage() {

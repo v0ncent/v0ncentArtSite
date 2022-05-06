@@ -2,8 +2,8 @@
 import { Box, Grid, Paper } from "@mui/material";
 
 // Importing needed components
-import ContentPage from "../ContentPage/ContentPage.jsx";
-import MenuComponent from "../MenuComponent/MenuComponent.jsx";
+import ContentPage from "../contentPage/ContentPage.jsx";
+import MenuComponent from "../menuComponent/MenuComponent.jsx";
 import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 import HeaderComponent from "../HeaderComponent/HeaderComponent.jsx";
 
