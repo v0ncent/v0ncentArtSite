@@ -12,22 +12,39 @@ import ComicsPage from "./comicsPage/ComicsPage.jsx";
 import LandingPage from "./landingPage/LandingPage.jsx";
 import GalleryPage from "./galleryPage/GalleryPage.jsx";
 
+// Import theme creation tools & font
+import "@fontsource/kalam";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#000000",
+    },
+  },
+  typography: {
+    fontFamily: "Kalam, Ariel",
+  },
+});
+
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
 
-          <Route path="/forum" element={<ForumPage />} />
+            <Route path="/forum" element={<ForumPage />} />
 
-          <Route path="/about" element={<AboutPage />} />
+            <Route path="/about" element={<AboutPage />} />
 
-          <Route path="/comics" element={<ComicsPage />} />
+            <Route path="/comics" element={<ComicsPage />} />
 
-          <Route path="/gallery" element={<GalleryPage />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/gallery" element={<GalleryPage />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </div>
   );
 }
