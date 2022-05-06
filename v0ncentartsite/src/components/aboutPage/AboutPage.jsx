@@ -1,5 +1,6 @@
 import { Box, Paper, Typography } from "@mui/material";
 
+// Importing needed components
 import MenuComponent from "../menuComponent/MenuComponent";
 import HeaderComponent from "../HeaderComponent/HeaderComponent";
 

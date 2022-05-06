@@ -4,8 +4,8 @@ import { Box, Grid, Paper } from "@mui/material";
 // Importing needed components
 import ContentPage from "../contentPage/ContentPage.jsx";
 import MenuComponent from "../menuComponent/MenuComponent.jsx";
-import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 import HeaderComponent from "../HeaderComponent/HeaderComponent.jsx";
+import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 
 function LandingPage() {
   return (
