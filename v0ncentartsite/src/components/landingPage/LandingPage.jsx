@@ -7,6 +7,8 @@ import MenuComponent from "../menuComponent/MenuComponent.jsx";
 import HeaderComponent from "../HeaderComponent/HeaderComponent.jsx";
 import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 
+import Create from "../creatE/creatE" 
+
 function LandingPage() {
   return (
     <Box bgcolor="#000000" sx={{ p: 8 }}>
@@ -21,6 +23,7 @@ function LandingPage() {
             <br />
             <Box sx={{ p: 1, border: 1 }}>
               <AnnouncementsPage />
+              <Create />
             </Box>
             <br />
             <Box sx={{ p: 1, border: 1 }}>
