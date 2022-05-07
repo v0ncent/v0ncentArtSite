@@ -1,6 +1,9 @@
 // CSS import
 import "./App.css";
 
+// Import MUI stuff
+import { Box, Paper } from "@mui/material";
+
 // React Imports
 import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -21,6 +24,9 @@ const theme = createTheme({
     primary: {
       main: "#000000",
     },
+    secondary: {
+      main: "#FFFFFF",
+    },
   },
   typography: {
     fontFamily: "Kalam, Ariel",
@@ -29,23 +35,27 @@ const theme = createTheme({
 
 function App() {
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Box bgcolor="#000000" sx={{ p: 8 }}>
+          <Paper sx={{ p: 5 }}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
 
-            <Route path="/forum" element={<ForumPage />} />
+                <Route path="/forum" element={<ForumPage />} />
 
-            <Route path="/about" element={<AboutPage />} />
+                <Route path="/about" element={<AboutPage />} />
 
-            <Route path="/comics" element={<ComicsPage />} />
+                <Route path="/comics" element={<ComicsPage />} />
 
-            <Route path="/gallery" element={<GalleryPage />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </div>
+                <Route path="/gallery" element={<GalleryPage />} />
+              </Routes>
+            </BrowserRouter>
+          </Paper>
+        </Box>
+      </div>
+    </ThemeProvider>
   );
 }
 

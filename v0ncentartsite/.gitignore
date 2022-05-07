@@ -25,3 +25,4 @@ yarn-error.log*
 #other files
 ./README2.md
 ./package-lock.json
+./config.env
