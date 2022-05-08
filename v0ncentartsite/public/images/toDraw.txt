@@ -7,5 +7,4 @@ smaller the better
      menu buttons png
      arrrow buttons for carosel png
      logo for browser
-     self portrait for about page
      draw the gallery title
