@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 // Importing needed components
 import TopNav from "../TopNav/TopNav";
