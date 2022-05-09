@@ -5,6 +5,5 @@ smaller the better
      v0ncent logo png
      site background jpg
      menu buttons png
-     arrrow buttons for carosel png
      logo for browser
      draw the gallery title
