@@ -1,11 +1,13 @@
-// Importing React & site nav component
+// Importing React, site nav component, and FileBase64 to convert an image to url
 import { useState } from "react";
 import TopNav from "../TopNav/TopNav";
+import FileBase64 from "react-file-base64";
 
-// Importing needed MUI components
+// Importing needed MUI components & icon
 import {
   Box,
   Grid,
+  Paper,
   Button,
   Accordion,
   TextField,
@@ -15,54 +17,46 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import { styled } from "@mui/material/styles";
-const Input = styled("input")({
-  display: "none",
-});
-
 function GalleryPage() {
   const [uploadForm, setUploadForm] = useState({
     title: "",
-    imgURL: "",
+    imageURL: "",
   });
-
-  // function updateUploadForm(value) {
-  //   return setUploadForm((prev) => {
-  //     return { ...prev, ...value };
-  //   });
-  // }
 
   async function onSubmit(e) {
     e.preventDefault();
-    console.log("poop");
+    setUploadForm({ title: "", imageURL: "" });
+    console.log("poop", uploadForm);
   }
 
   return (
-    <>
-      {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
-      <Grid container>
-        <Grid item xs={12}>
-          <TopNav />
-        </Grid>
+    <Grid container>
+      <Grid item xs={12}>
+        <TopNav />
+      </Grid>
 
-        <Grid item xs={12} sx={{ p: 4 }}>
-          <Typography variant="h2">
-            PLACEHOLDER 4 THE GALLERY Vincent Drawing
-          </Typography>
-        </Grid>
+      <Grid item xs={12} sx={{ p: 4 }}>
+        {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
+        <Typography variant="h2">
+          PLACEHOLDER 4 THE GALLERY Vincent Drawing
+        </Typography>
+      </Grid>
 
-        <Accordion color="primary.main">
+      <Paper elevation={12}>
+        <Accordion>
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
             id="panel1a-header"
+            aria-controls="panel1a-content"
+            expandIcon={<ExpandMoreIcon />}
+            // sx={{ backgroundColor: "gray" }}
           >
             <Typography>upload here</Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails sx={{ border: "5px" }}>
             <Typography>upload & title your work here</Typography>
-            <Grid item xs={12}>
-              <Box component={"form"} onSubmit={onSubmit}>
+
+            <Box component={"form"} onSubmit={onSubmit}>
+              <Grid item xs={12}>
                 <TextField
                   id={"title"}
                   label="title"
@@ -70,44 +64,34 @@ function GalleryPage() {
                   value={uploadForm.title}
                   onChange={(e) => setUploadForm({ title: e.target.value })}
                 />
-                <br />
-                <br />
+              </Grid>
+
+              <Grid item xs={12} sx={{ mt: 4 }}>
+                <FileBase64
+                  type="image"
+                  multiple={false}
+                  onDone={({ base64 }) =>
+                    setUploadForm({ ...uploadForm, imageURL: base64 })
+                  }
+                />
+              </Grid>
+
+              <Grid item xs={12}>
                 <Button
-                  variant="contained"
-                  color="secondary"
                   id="submit"
                   type="submit"
+                  sx={{ mt: 5 }}
+                  color="primary"
+                  variant="contained"
                 >
                   submit
-                </Button>{" "}
-                <label htmlFor="contained-button-file">
-                  <Input
-                    accept="image/*"
-                    id="contained-button-file"
-                    multiple
-                    type="file"
-                  />
-                  <Button
-                    id="imgURL"
-                    type="file"
-                    component="span"
-                    variant="contained"
-                    value={uploadForm.imgURL}
-                    onChange={(e) => setUploadForm({ imgURL: e.target.value })}
-                  >
-                    Upload
-                  </Button>
-                </label>
-              </Box>
-            </Grid>
+                </Button>
+              </Grid>
+            </Box>
           </AccordionDetails>
         </Accordion>
-        <Grid item xs={12}>
-          <Typography>{uploadForm.title}</Typography>
-          <Typography>{uploadForm.imgURL}</Typography>
-        </Grid>
-      </Grid>
-    </>
+      </Paper>
+    </Grid>
   );
 }
 
