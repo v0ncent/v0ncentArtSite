@@ -36,25 +36,23 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <Box bgcolor="#000000" sx={{ p: 8 }}>
-          <Paper sx={{ p: 5 }}>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
+      <Box bgcolor="#000000" sx={{ p: 5 }}>
+        <Paper sx={{ p: 5 }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
 
-                <Route path="/forum" element={<ForumPage />} />
+              <Route path="/forum" element={<ForumPage />} />
 
-                <Route path="/about" element={<AboutPage />} />
+              <Route path="/about" element={<AboutPage />} />
 
-                <Route path="/comics" element={<ComicsPage />} />
+              <Route path="/comics" element={<ComicsPage />} />
 
-                <Route path="/gallery" element={<GalleryPage />} />
-              </Routes>
-            </BrowserRouter>
-          </Paper>
-        </Box>
-      </div>
+              <Route path="/gallery" element={<GalleryPage />} />
+            </Routes>
+          </BrowserRouter>
+        </Paper>
+      </Box>
     </ThemeProvider>
   );
 }

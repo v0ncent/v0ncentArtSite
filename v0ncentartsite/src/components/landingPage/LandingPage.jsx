@@ -1,29 +1,25 @@
-// MUI Imports
-import { Box, Grid } from "@mui/material";
-
 // Importing needed components
+import { Grid } from "@mui/material";
 import TopNav from "../TopNav/TopNav.jsx";
 import ContentPage from "../contentPage/ContentPage.jsx";
 import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 
-import Create from "../creatE/creatE";
-import UploadTest from "../UploadTest/UploadTest.jsx";
-
 function LandingPage() {
   return (
     <Grid container>
+      {/* spacer */}
       <Grid item xs={12}>
         <TopNav />
-        <Box sx={{ p: 1, border: 1, mt: 2 }}>
-          <AnnouncementsPage />
-          <Create />
-          <UploadTest />
-        </Box>
-        <br />
-        <Box sx={{ p: 1, border: 1 }}>
-          <ContentPage />
-        </Box>
       </Grid>
+      {/* spacer */}
+      <Grid item xs={12}>
+        <AnnouncementsPage />
+      </Grid>
+      {/* spacer */}
+      <Grid item xs={12}>
+        <ContentPage />
+      </Grid>
+      {/* spacer */}
     </Grid>
   );
 }

@@ -1,15 +1,13 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 function announcementsPage() {
-    return (
-      <Grid container>
-        <Grid item xs={12}>
-          <Box>
-            <Typography textAlign={"left"} variant="h2">Announcements!</Typography>
-          </Box>
-        </Grid>
-      </Grid>
-    );
+  return (
+    <Box sx={{ border: 1, pt: 2, pb: 2 }}>
+      <Typography textAlign={"left"} sx={{ p: 2 }}>
+        Announcements!
+      </Typography>
+    </Box>
+  );
 }
 
 export default announcementsPage;
