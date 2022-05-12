@@ -40,7 +40,7 @@ function GalleryPage() {
         setUploadForm({ title: "", imageURL: "" });
         console.log("poop", uploadForm);
       } catch (error) {
-        window.alert(stringify(error));
+        window.alert(error);
         return
       }
     }else {
