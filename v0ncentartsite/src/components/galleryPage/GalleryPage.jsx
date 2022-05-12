@@ -22,13 +22,31 @@ function GalleryPage() {
     title: "",
     imageURL: "",
   });
-
   async function onSubmit(e) {
     e.preventDefault();
-    setUploadForm({ title: "", imageURL: "" });
-    console.log("poop", uploadForm);
+    const newImage= { ...uploadForm };
+    await fetch("http://localhost:5000/addToGallery", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newImage),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
+    if(uploadForm.imageURL != null){
+      try {
+        setUploadForm({ title: "", imageURL: "" });
+        console.log("poop", uploadForm);
+      } catch (error) {
+        window.alert(stringify(error));
+        return
+      }
+    }else {
+      window.alert("You must provide and image to upload.");
+    }
   }
-
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -36,6 +54,7 @@ function GalleryPage() {
       </Grid>
 
       <Grid item xs={12} sx={{ p: 4 }}>
+
         {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
         <Typography variant="h2">
           PLACEHOLDER 4 THE GALLERY Vincent Drawing
@@ -54,10 +73,20 @@ function GalleryPage() {
           </AccordionSummary>
           <AccordionDetails sx={{ border: "5px" }}>
             <Typography>upload & title your work here</Typography>
-
+            {/* <Grid item xs={12}>
+                <TextField
+                  required
+                  id={"title"}
+                  label="title"
+                  variant="outlined"
+                  value={uploadForm.title}
+                  onChange={(e) => setUploadForm({ title: e.target.value })}
+                />
+              </Grid> */}
             <Box component={"form"} onSubmit={onSubmit}>
               <Grid item xs={12}>
                 <TextField
+                  required
                   id={"title"}
                   label="title"
                   variant="outlined"
@@ -65,7 +94,6 @@ function GalleryPage() {
                   onChange={(e) => setUploadForm({ title: e.target.value })}
                 />
               </Grid>
-
               <Grid item xs={12} sx={{ mt: 4 }}>
                 <FileBase64
                   type="image"
