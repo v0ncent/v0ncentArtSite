@@ -38,6 +38,7 @@ function GalleryPage() {
       window.alert(error);
       return;
     });
+
     if (uploadForm.imageURL != null) {
       try {
         setUploadForm({ title: "", imageURL: "" });
@@ -80,6 +81,7 @@ function GalleryPage() {
               <Box component={"form"} onSubmit={onSubmit}>
                 <Grid item xs={12}>
                   <TextField
+                    required
                     id={"title"}
                     label="title"
                     variant="outlined"
@@ -114,63 +116,7 @@ function GalleryPage() {
           </Accordion>
         </Paper>
       </Grid>
-
-      <Grid item xs={12} sx={{ p: 4 }}>
-        {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
-        <Typography variant="h2">
-          PLACEHOLDER 4 THE GALLERY Vincent Drawing
-        </Typography>
-      </Grid>
-
-      <Paper elevation={12}>
-        <Accordion>
-          <AccordionSummary
-            id="panel1a-header"
-            aria-controls="panel1a-content"
-            expandIcon={<ExpandMoreIcon />}
-          >
-            <Typography>upload here</Typography>
-          </AccordionSummary>
-          <AccordionDetails sx={{ border: "5px" }}>
-            <Typography>upload & title your work here</Typography>
-            <Box component={"form"} onSubmit={onSubmit}>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  id={"title"}
-                  label="title"
-                  variant="outlined"
-                  value={uploadForm.title}
-                  onChange={(e) => setUploadForm({ title: e.target.value })}
-                />
-              </Grid>
-
-              <Grid item xs={12} sx={{ mt: 4 }}>
-                <FileBase64
-                  type="image"
-                  multiple={false}
-                  onDone={({ base64 }) =>
-                    setUploadForm({ ...uploadForm, imageURL: base64 })
-                  }
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <Button
-                  id="submit"
-                  type="submit"
-                  sx={{ mt: 5 }}
-                  color="primary"
-                  variant="contained"
-                >
-                  submit
-                </Button>
-              </Grid>
-            </Box>
-          </AccordionDetails>
-        </Accordion>
-      </Paper>
-    </Grid>
+    </Box>
   );
 }
 
