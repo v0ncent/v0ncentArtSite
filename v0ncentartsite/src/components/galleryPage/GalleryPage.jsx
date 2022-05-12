@@ -1,72 +1,125 @@
+// Importing React, site nav component, and FileBase64 to convert an image to url
+import { useState } from "react";
+import TopNav from "../TopNav/TopNav";
+import FileBase64 from "react-file-base64";
+
+// Importing needed MUI components & icon
 import {
+  Box,
+  Grid,
+  Paper,
+  Button,
   Accordion,
+  TextField,
   Typography,
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import { Box, Grid, TextField, Button, Stack } from "@mui/material";
-
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-// Importing needed components
-import TopNav from "../TopNav/TopNav";
-
-import { styled } from "@mui/material/styles";
-const Input = styled("input")({
-  display: "none",
-});
-
 function GalleryPage() {
+  const [uploadForm, setUploadForm] = useState({
+    title: "",
+    imageURL: "",
+  });
+  async function onSubmit(e) {
+    e.preventDefault();
+    const newImage= { ...uploadForm };
+    await fetch("http://localhost:5000/addToGallery", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newImage),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
+    if(uploadForm.imageURL != null){
+      try {
+        setUploadForm({ title: "", imageURL: "" });
+        console.log("poop", uploadForm);
+      } catch (error) {
+        window.alert(stringify(error));
+        return
+      }
+    }else {
+      window.alert("You must provide and image to upload.");
+    }
+  }
   return (
-    <>
-      {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
-      <Grid container>
-        <Grid item xs={12}>
-          <TopNav />
-        </Grid>
+    <Grid container>
+      <Grid item xs={12}>
+        <TopNav />
+      </Grid>
 
-        <Grid item xs={12} sx={{ p: 4 }}>
-          <Typography variant="h2">
-            PLACEHOLDER 4 THE GALLERY Vincent Drawing
-          </Typography>
-        </Grid>
+      <Grid item xs={12} sx={{ p: 4 }}>
 
-        <Accordion color="primary.main">
+        {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
+        <Typography variant="h2">
+          PLACEHOLDER 4 THE GALLERY Vincent Drawing
+        </Typography>
+      </Grid>
+
+      <Paper elevation={12}>
+        <Accordion>
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
             id="panel1a-header"
+            aria-controls="panel1a-content"
+            expandIcon={<ExpandMoreIcon />}
+            // sx={{ backgroundColor: "gray" }}
           >
             <Typography>upload here</Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails sx={{ border: "5px" }}>
             <Typography>upload & title your work here</Typography>
-            <Grid item xs={12}>
-              <Box component={"form"}>
-                <TextField label="title" variant="outlined" />
-                <br />
-                <br />
-                <Button variant="contained" color="secondary">
+            {/* <Grid item xs={12}>
+                <TextField
+                  required
+                  id={"title"}
+                  label="title"
+                  variant="outlined"
+                  value={uploadForm.title}
+                  onChange={(e) => setUploadForm({ title: e.target.value })}
+                />
+              </Grid> */}
+            <Box component={"form"} onSubmit={onSubmit}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  id={"title"}
+                  label="title"
+                  variant="outlined"
+                  value={uploadForm.title}
+                  onChange={(e) => setUploadForm({ title: e.target.value })}
+                />
+              </Grid>
+              <Grid item xs={12} sx={{ mt: 4 }}>
+                <FileBase64
+                  type="image"
+                  multiple={false}
+                  onDone={({ base64 }) =>
+                    setUploadForm({ ...uploadForm, imageURL: base64 })
+                  }
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <Button
+                  id="submit"
+                  type="submit"
+                  sx={{ mt: 5 }}
+                  color="primary"
+                  variant="contained"
+                >
                   submit
                 </Button>
-                {"  .  "}
-                <label htmlFor="contained-button-file">
-                  <Input
-                    accept="image/*"
-                    id="contained-button-file"
-                    multiple
-                    type="file"
-                  />
-                  <Button variant="contained" component="span">
-                    Upload
-                  </Button>
-                </label>
-              </Box>
-            </Grid>
+              </Grid>
+            </Box>
           </AccordionDetails>
         </Accordion>
-      </Grid>
-    </>
+      </Paper>
+    </Grid>
   );
 }
 
