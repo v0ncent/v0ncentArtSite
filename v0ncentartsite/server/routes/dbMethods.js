@@ -19,7 +19,7 @@ const dataBaseObject = require("../db/conn"); // conn has what we need to connec
 
 // functions for quality of life
 getConnection = () => {return dataBaseObject.getDb(db)};
-getCollection = () => {return getConnection.collection(collection)}; //get collection
+getCollection = () => {return getConnection().collection(collection)}; //get collection
 
 //convert id to object id for finding record
 const ObjectId = require("mongodb").ObjectId;  //requires mongodb library
@@ -38,7 +38,7 @@ recordRoutes.route("/getAll").get(function (request, response) {
 recordRoutes.route("/getAll/:id").get(function (request, response) {
     getConnection();
     let myquery = {_id: ObjectId(request.params.id)}; //define specific document we want to find
-    getCollection()
+    getCollection
     .findOne(myquery, function( error, result){ //use findOne method to find single document
         if (error) throw error;
         response.json(result);
@@ -46,18 +46,22 @@ recordRoutes.route("/getAll/:id").get(function (request, response) {
 });
 
 //add new record to the gallery db
-recordRoutes.route("/getAll/addToGallery").post(function (request, response){
+recordRoutes.route("/addToGallery").post(function (request, response){
     getConnection();
     let myRecord = {
         imageURL: request.body.imageURL,
         title: request.body.title,
     };
     getCollection().insertOne(myRecord, function(error,result){
-        if (error) throw error;
+        if (error){
+            console.log(error);
+            throw error;
+        } else{
+            console.log("sucess");
+        }
         response.json(result);
     })
 });
-
 //update a record by id
 recordRoutes.route("/update/:id").post(function (request, response){
     getConnection();
@@ -75,7 +79,7 @@ recordRoutes.route(":/id").delete((request, response) =>
 {
     getConnection();
     let myquery = {_id: ObjectId(request.params.id)};
-    getCollection().deleteOne(myquery, function(error, object){
+    getCollection.deleteOne(myquery, function(error, object){
         if(error) throw error;
         console.log("one document deleted");
         response.json(obj);
