@@ -37,7 +37,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Box bgcolor="#000000" sx={{ p: 5 }}>
-        <Paper sx={{ p: 5 }}>
+        <Paper sx={{ p: 2 }}>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<LandingPage />} />

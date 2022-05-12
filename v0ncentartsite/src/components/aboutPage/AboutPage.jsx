@@ -15,9 +15,9 @@ function AboutPage() {
           </Typography>
         </Grid>
 
-        <Grid item xs={6}>
-          <Box sx={{ p: 4 }} textAlign={"left"}>
-            <Typography variant="h4">
+        <Grid item xs={12}>
+          <Box sx={{ pb: 4 }} textAlign={"left"}>
+            <Typography>
               {/* TODO: add a image for self portrait next to bio */}
               Hello! My name is Vincent Banks, I am a self taught artist and
               computer programmer. I enjoy creating grotesque style pieces and
@@ -26,7 +26,7 @@ function AboutPage() {
               <br />I hope this site finds you well and you have enjoyed a
               platform to share your work!
             </Typography>
-            <Typography variant="h4" sx={{ pt: 4 }}>
+            <Typography sx={{ pt: 4 }}>
               GitHub:{" "}
               <a
                 href="https://github.com/v0ncent"
@@ -47,11 +47,11 @@ function AboutPage() {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={6}>
-          <Paper elevation={12} sx={{ p: 4 }}>
+        <Grid item xs={12}>
+          <Paper elevation={12}>
             <img
-              width={350}
-              height={350}
+              width="100%"
+              height="100%"
               src={SelfPortrait}
               alt="Self portrait of Vincent (he looks disheveled). Text reads 'what I look like 90% of the time'"
             />

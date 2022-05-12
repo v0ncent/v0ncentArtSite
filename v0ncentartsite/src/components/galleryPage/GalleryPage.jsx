@@ -30,14 +30,16 @@ function GalleryPage() {
   }
 
   return (
-    <>
+    <Box sx={{ minHeight: "100vh" }}>
       <TopNav />
       <Grid container>
         <Grid item xs={12} sx={{ p: 4 }}>
           {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
-          <Typography variant="h2">
-            PLACEHOLDER 4 THE GALLERY Vincent Drawing
-          </Typography>
+          <Box>
+            <Typography variant="h2">
+              PLACEHOLDER 4 THE GALLERY Vincent Drawing
+            </Typography>
+          </Box>
         </Grid>
 
         <Paper elevation={12}>
@@ -90,7 +92,8 @@ function GalleryPage() {
           </Accordion>
         </Paper>
       </Grid>
-    </>
+      <Box bgcolor={"#222222"} minHeight="1000px" />
+    </Box>
   );
 }
 
