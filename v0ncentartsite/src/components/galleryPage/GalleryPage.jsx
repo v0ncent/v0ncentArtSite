@@ -48,7 +48,7 @@ function GalleryPage() {
     }
   }
 
-    //see if this works 
+    //--see if this works --
     function getAllRecords(){
       let allRecords = [];
       await fetch("http://localhhost:5000/getAll", {
