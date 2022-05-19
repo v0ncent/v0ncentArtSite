@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import mongoose from "mongoose";
 
 export default function UploadTest() {
-const mongoose = require("mongoose");
+  const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
+  const Schema = mongoose.Schema;
+  const ObjectId = Schema.ObjectId;
 
-const ImgUp = new Schema({
-  title: String,
-  image: String,
-});
+  const ImgUp = new Schema({
+    title: String,
+    image: String,
+  });
 
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
@@ -29,7 +29,9 @@ const ImgUp = new Schema({
   return (
     <>
       <input type="file" multiple accept="image/*" onChange={onImageChange} />
-      {imageURLs.map(imageSrc => <img src={imageSrc}/>)}
+      {imageURLs.map((imageSrc) => (
+        <img src={imageSrc} />
+      ))}
     </>
   );
 }

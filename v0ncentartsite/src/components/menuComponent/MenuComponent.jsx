@@ -15,7 +15,7 @@ function MenuComponent() {
         </Grid>
 
         <Grid item xs={0.33}>
-          <Divider orientation="vertical"/>
+          <Divider orientation="vertical" />
         </Grid>
 
         <Grid item xs={2.75} textAlign={"center"}>
