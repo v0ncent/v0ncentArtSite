@@ -49,7 +49,7 @@ function GalleryPage() {
   }
 
     //--see if this works --
-    function getAllRecords(){
+   async function getAllRecords(){
       let allRecords = [];
       await fetch("http://localhhost:5000/getAll", {
         method: 'QUERY',
