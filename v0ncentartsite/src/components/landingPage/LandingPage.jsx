@@ -6,20 +6,17 @@ import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 
 function LandingPage() {
   return (
-    <Box sx={{ minHeight: "1180px" }}>
+    <Box sx={{ height: "100vh" }}>
       <Grid container>
-        {/* spacer */}
         <Grid item xs={12} sx={{ mb: 2 }}>
           <TopNav />
         </Grid>
         <Grid item xs={12} sx={{ mb: 2 }}>
           <AnnouncementsPage />
         </Grid>
-        {/* spacer */}
         <Grid item xs={12}>
           <ContentPage />
         </Grid>
-        {/* spacer */}
       </Grid>
     </Box>
   );

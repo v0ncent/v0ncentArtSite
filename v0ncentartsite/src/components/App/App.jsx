@@ -15,6 +15,8 @@ import ComicsPage from "../comicsPage/ComicsPage.jsx";
 import LandingPage from "../landingPage/LandingPage.jsx";
 import GalleryPage from "../galleryPage/GalleryPage.jsx";
 
+import SwitchSide from "../SwitchSide/SwitchSide";
+
 // Import theme creation tools & font
 import "@fontsource/kalam";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -40,6 +42,8 @@ function App() {
         <Paper sx={{ p: 2 }}>
           <BrowserRouter>
             <Routes>
+              <Route path="/switcher" element={<SwitchSide />} />
+
               <Route path="/" element={<LandingPage />} />
 
               <Route path="/forum" element={<ForumPage />} />
