@@ -46,23 +46,7 @@ function GalleryPage() {
     }else {
       window.alert("You must provide and image to upload.");
     }
-  }
-
-    //--see if this works --
-   async function getAllRecords(){
-      let allRecords = [];
-      await fetch("http://localhhost:5000/getAll", {
-        method: 'QUERY',
-        body: JSON.stringify(allRecords),
-        headers: {
-          'content-type': 'application/json'
-        },
-      })
-      .then(allRecords => allRecords.json())
-      .then(data => console.log(data));
-      return;
-      };
-      
+  }    
   return (
     <Grid container>
       <Grid item xs={12}>

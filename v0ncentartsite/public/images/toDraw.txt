@@ -7,3 +7,4 @@ smaller the better
      menu buttons png
      logo for browser
      draw the gallery title
+     about the artist
