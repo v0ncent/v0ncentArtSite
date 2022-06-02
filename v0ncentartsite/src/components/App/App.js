@@ -14,6 +14,7 @@ import ForumPage from "../forumPage/ForumPage.jsx";
 import ComicsPage from "../comicsPage/ComicsPage.jsx";
 import LandingPage from "../landingPage/LandingPage.jsx";
 import GalleryPage from "../galleryPage/GalleryPage.jsx";
+import UploadTest from "../UploadTest/UploadTest";
 
 // Import theme creation tools & font
 import "@fontsource/kalam";
@@ -42,6 +43,8 @@ function App() {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<LandingPage />} />
+
+                <Route path="/test" element={<UploadTest />} />
 
                 <Route path="/forum" element={<ForumPage />} />
 

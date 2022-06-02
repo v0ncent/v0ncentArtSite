@@ -24,7 +24,7 @@ function GalleryPage() {
   });
   async function onSubmit(e) {
     e.preventDefault();
-    const newImage= { ...uploadForm };
+    const newImage = { ...uploadForm };
     await fetch("http://localhost:5000/addToGallery", {
       method: "POST",
       headers: {
@@ -35,18 +35,19 @@ function GalleryPage() {
       window.alert(error);
       return;
     });
-    if(uploadForm.imageURL != null){
-      try {
-        setUploadForm({ title: "", imageURL: "" });
-        console.log("poop", uploadForm);
-      } catch (error) {
-        window.alert(stringify(error));
-        return
-      }
-    }else {
-      window.alert("You must provide and image to upload.");
-    }
-  }    
+
+    // if (uploadForm.imageURL != null) {
+    //   try {
+    //     setUploadForm({ title: "", imageURL: "" });
+    //     console.log("poop", uploadForm);
+    //   } catch (error) {
+    //     window.alert(stringify(error));
+    //     return;
+    //   }
+    // } else {
+    //   window.alert("You must provide and image to upload.");
+    // }
+  }
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -54,7 +55,6 @@ function GalleryPage() {
       </Grid>
 
       <Grid item xs={12} sx={{ p: 4 }}>
-
         {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
         <Typography variant="h2">
           PLACEHOLDER 4 THE GALLERY Vincent Drawing
