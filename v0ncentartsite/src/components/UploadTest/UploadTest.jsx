@@ -27,27 +27,7 @@ const ImgUp = new Schema({
     setImages([...e.target.files]);
   }
 
-    //create axios components
-    const url = "http://localhost:5000/getAll";
-
-    // get items function
-    const getItems = ()=> axios.get(url);
   
-    //---give this a shot jack------
-    const getAllItems = async()=>{ //define getAllItems Function
-      try{
-        const data = getItems(); //create data variable that is our axios function
-        return data.then(function(response){
-          return response.data;  //return data feild of prmoised result of getItems function
-        });
-      } catch(error){
-        console.log(error);
-      }
-    }
-
-    //test function
-    getAllItems();
-    console.log(getAllItems());
   
   return (
     <>

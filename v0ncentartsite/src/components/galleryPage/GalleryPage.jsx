@@ -1,7 +1,8 @@
 // Importing React, site nav component, and FileBase64 to convert an image to url
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TopNav from "../TopNav/TopNav";
 import FileBase64 from "react-file-base64";
+import { getAllItems } from "./getGalleryItems";
 
 // Importing needed MUI components & icon
 import {
@@ -22,6 +23,7 @@ function GalleryPage() {
     title: "",
     imageURL: "",
   });
+  const [imageData,setImageData] = useState([{}]); //create useState of an empty object to place hold for image data
   async function onSubmit(e) {
     e.preventDefault();
     const newImage = { ...uploadForm };
@@ -48,6 +50,19 @@ function GalleryPage() {
     //   window.alert("You must provide and image to upload.");
     // }
   }
+
+  useEffect(()=>{ //get image data from mongo
+    const myFunc = async ()=>{
+      try{
+        const data = await getAllItems();
+        setImageData(data); //set image data
+      }catch(error){
+        console.log(error);
+      }
+    }
+    myFunc();
+  },[]);
+
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -119,6 +134,31 @@ function GalleryPage() {
           </AccordionDetails>
         </Accordion>
       </Paper>
+      {/*test rendering image data
+
+      basically renders the array of all data
+
+      so to access specific indexes use like
+      
+      image[0] or something idk how react works lol
+      
+      */}
+      {imageData.map((image)=>{
+        return (
+          <>
+            <p
+            style={
+              {
+                padding: "5px",
+              }
+            } 
+            >{image.title}</p>
+            <img src={image.imageURL}>
+              
+            </img>
+          </>
+        )
+      })}
     </Grid>
   );
 }
