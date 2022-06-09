@@ -1,7 +1,8 @@
-// Importing React, site nav component, and FileBase64 to convert an image to url
-import { useState, useEffect } from "react";
+// Importing React, needed components, and FileBase64 to convert an image to url
 import TopNav from "../TopNav/TopNav";
+import GalleryItems from "./GalleryItems";
 import FileBase64 from "react-file-base64";
+import { useState, useEffect } from "react";
 import { getAllItems } from "./getGalleryItems";
 
 // Importing needed MUI components & icon
@@ -23,7 +24,22 @@ function GalleryPage() {
     title: "",
     imageURL: "",
   });
-  const [imageData,setImageData] = useState([{}]); //create useState of an empty object to place hold for image data
+
+  const [imageData, setImageData] = useState([{}]); //create useState of an empty object to place hold for image data
+
+  useEffect(() => {
+    //get image data from mongo
+    const myFunc = async () => {
+      try {
+        const data = await getAllItems();
+        setImageData(data); //set image data
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    myFunc();
+  }, []);
+
   async function onSubmit(e) {
     e.preventDefault();
     const newImage = { ...uploadForm };
@@ -37,31 +53,7 @@ function GalleryPage() {
       window.alert(error);
       return;
     });
-
-    // if (uploadForm.imageURL != null) {
-    //   try {
-    //     setUploadForm({ title: "", imageURL: "" });
-    //     console.log("poop", uploadForm);
-    //   } catch (error) {
-    //     window.alert(stringify(error));
-    //     return;
-    //   }
-    // } else {
-    //   window.alert("You must provide and image to upload.");
-    // }
   }
-
-  useEffect(()=>{ //get image data from mongo
-    const myFunc = async ()=>{
-      try{
-        const data = await getAllItems();
-        setImageData(data); //set image data
-      }catch(error){
-        console.log(error);
-      }
-    }
-    myFunc();
-  },[]);
 
   return (
     <Grid container>
@@ -71,94 +63,66 @@ function GalleryPage() {
 
       <Grid item xs={12} sx={{ p: 4 }}>
         {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
-        <Typography variant="h2">
-          PLACEHOLDER 4 THE GALLERY Vincent Drawing
-        </Typography>
+        <Typography variant="h2">Gallery Vincent Drawing</Typography>
       </Grid>
 
-      <Paper elevation={12}>
-        <Accordion>
-          <AccordionSummary
-            id="panel1a-header"
-            aria-controls="panel1a-content"
-            expandIcon={<ExpandMoreIcon />}
-            // sx={{ backgroundColor: "gray" }}
-          >
-            <Typography>upload here</Typography>
-          </AccordionSummary>
-          <AccordionDetails sx={{ border: "5px" }}>
-            <Typography>upload & title your work here</Typography>
-            {/* <Grid item xs={12}>
-                <TextField
-                  required
-                  id={"title"}
-                  label="title"
-                  variant="outlined"
-                  value={uploadForm.title}
-                  onChange={(e) => setUploadForm({ title: e.target.value })}
-                />
-              </Grid> */}
-            <Box component={"form"} onSubmit={onSubmit}>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  id={"title"}
-                  label="title"
-                  variant="outlined"
-                  value={uploadForm.title}
-                  onChange={(e) => setUploadForm({ title: e.target.value })}
-                />
-              </Grid>
-              <Grid item xs={12} sx={{ mt: 4 }}>
-                <FileBase64
-                  type="image"
-                  multiple={false}
-                  onDone={({ base64 }) =>
-                    setUploadForm({ ...uploadForm, imageURL: base64 })
-                  }
-                />
-              </Grid>
+      <Grid item xs={12}>
+        <Paper elevation={12}>
+          <Accordion>
+            <AccordionSummary
+              id="panel1a-header"
+              aria-controls="panel1a-content"
+              expandIcon={<ExpandMoreIcon />}
+            >
+              <Typography>upload new images</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ border: "5px" }}>
+              <Typography>upload & title your work here</Typography>
+              <Box component={"form"} onSubmit={onSubmit}>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    id={"title"}
+                    label="title"
+                    variant="outlined"
+                    value={uploadForm.title}
+                    onChange={(e) => setUploadForm({ title: e.target.value })}
+                  />
+                </Grid>
+                <Grid item xs={12} sx={{ mt: 4 }}>
+                  <FileBase64
+                    type="image"
+                    multiple={false}
+                    onDone={({ base64 }) =>
+                      setUploadForm({ ...uploadForm, imageURL: base64 })
+                    }
+                  />
+                </Grid>
 
-              <Grid item xs={12}>
-                <Button
-                  id="submit"
-                  type="submit"
-                  sx={{ mt: 5 }}
-                  color="primary"
-                  variant="contained"
-                >
-                  submit
-                </Button>
-              </Grid>
-            </Box>
-          </AccordionDetails>
-        </Accordion>
-      </Paper>
-      {/*test rendering image data
+                <Grid item xs={12}>
+                  <Button
+                    id="submit"
+                    type="submit"
+                    sx={{ mt: 5 }}
+                    color="primary"
+                    variant="contained"
+                  >
+                    submit
+                  </Button>
+                </Grid>
+              </Box>
+            </AccordionDetails>
+          </Accordion>
+        </Paper>
+      </Grid>
 
-      basically renders the array of all data
-
-      so to access specific indexes use like
-      
-      image[0] or something idk how react works lol
-      
-      */}
-      {imageData.map((image)=>{
-        return (
-          <>
-            <p
-            style={
-              {
-                padding: "5px",
-              }
-            } 
-            >{image.title}</p>
-            <img src={image.imageURL}>
-              
-            </img>
-          </>
-        )
-      })}
+      {/*test rendering image data basically renders the array of all data so to access specific
+        indexes use like image[0] or something idk how react works lol */}
+      <Grid item xs={4}>
+        {imageData.map((image) => {
+          return GalleryItems(image);
+        })}
+      </Grid>
     </Grid>
   );
 }
