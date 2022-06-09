@@ -15,7 +15,7 @@ import ComicsPage from "../comicsPage/ComicsPage.jsx";
 import LandingPage from "../landingPage/LandingPage.jsx";
 import GalleryPage from "../galleryPage/GalleryPage.jsx";
 
-import UploadTest from "../UploadTest/UploadTest";
+// import UploadTest from "../UploadTest/UploadTest";
 
 // Import theme creation tools & font
 import "@fontsource/kalam";
@@ -25,6 +25,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#000000",
+      grey: "#CACACA",
     },
     secondary: {
       main: "#FFFFFF",
@@ -45,7 +46,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<LandingPage />} />
 
-                <Route path="/test" element={<UploadTest />} />
+                {/* <Route path="/test" element={<UploadTest />} /> */}
 
                 <Route path="/forum" element={<ForumPage />} />
 

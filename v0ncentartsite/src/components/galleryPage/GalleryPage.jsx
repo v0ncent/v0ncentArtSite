@@ -118,10 +118,13 @@ function GalleryPage() {
 
       {/*test rendering image data basically renders the array of all data so to access specific
         indexes use like image[0] or something idk how react works lol */}
-      <Grid item xs={4}>
-        {imageData.map((image) => {
-          return GalleryItems(image);
-        })}
+
+      <Grid item xs={12}>
+        <Grid item xs={4} sx={{ pt: 5 }}>
+          {imageData.map((image, i) => {
+            return GalleryItems(image, i);
+          })}
+        </Grid>
       </Grid>
     </Grid>
   );

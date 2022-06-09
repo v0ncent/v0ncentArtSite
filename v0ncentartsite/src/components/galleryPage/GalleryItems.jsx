@@ -1,8 +1,12 @@
-export default function GalleryItems(image) {
+import { Box, Typography } from "@mui/material";
+
+export default function GalleryItems(image, i) {
   return (
-    <>
-      <p>{image.title}</p>
-      <img src={image.imageURL}></img>
-    </>
+    <Box key={i} sx={{ border: 2 }}>
+      <Typography sx={{ backgroundColor: "primary.grey" }}>
+        {image.title}
+      </Typography>
+      <img alt={image.title} src={image.imageURL}></img>
+    </Box>
   );
 }
