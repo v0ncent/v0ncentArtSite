@@ -20,6 +20,15 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function GalleryPage() {
+  // @ Vincent - 'd' wil return the date and time when you called it.
+  // so, if you want the date to be included you need to set the 'time' property in the uploadForm
+  // (might not be named time but you get the point) to be 'd'
+  // feel free to message me any questions, but if you spin up the app and look at the console
+  // you'll see what the date (or 'd') is captured as
+  const d = new Date();
+  d.getDate();
+  console.log(d);
+
   const [uploadForm, setUploadForm] = useState({
     title: "",
     imageURL: "",

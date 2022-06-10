@@ -9,7 +9,7 @@ import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 import Create from "../creatE/creatE";
 import UploadTest from "../UploadTest/UploadTest.jsx";
 
-function LandingPage() {
+export default function LandingPage() {
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -27,5 +27,3 @@ function LandingPage() {
     </Grid>
   );
 }
-
-export default LandingPage;
