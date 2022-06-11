@@ -25,14 +25,15 @@ function GalleryPage() {
   // (might not be named time but you get the point) to be 'd'
   // feel free to message me any questions, but if you spin up the app and look at the console
   // you'll see what the date (or 'd') is captured as
-  const d = new Date();
-  d.getDate();
-  console.log(d);
+  const dd = new Date();
+  dd.getDate();
+  console.log(dd);
 
   const [uploadForm, setUploadForm] = useState({
     title: "",
     imageURL: "",
-  });
+    datePosted: dd //set field to dick date
+  }); 
 
   const [imageData, setImageData] = useState([{}]); //create useState of an empty object to place hold for image data
 

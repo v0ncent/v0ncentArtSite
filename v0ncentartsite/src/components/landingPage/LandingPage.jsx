@@ -17,7 +17,6 @@ export default function LandingPage() {
         <Box sx={{ p: 1, border: 1, mt: 2 }}>
           <AnnouncementsPage />
           <Create />
-          <UploadTest />
         </Box>
         <br />
         <Box sx={{ p: 1, border: 1 }}>
