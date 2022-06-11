@@ -3,7 +3,21 @@ import TopNav from "../TopNav/TopNav";
 import GalleryItems from "./GalleryItems";
 import FileBase64 from "react-file-base64";
 import { useState, useEffect } from "react";
-import { getAllItems } from "./getGalleryItems";
+
+/*
+Dear @Jack, <-----
+I created MongoGetter,
+This is where pretty much everything needed to interact with
+mongo is, just export the functions from it and hopefully it
+works and if it doesnt fuck me.
+ */
+import { 
+  getAllItems,  
+  //these arent used but they are there to be used
+  getOneItem,
+  updateOneItem,
+  deleteOneItem
+} from "./MongoGetter";
 
 // Importing needed MUI components & icon
 import {
@@ -20,11 +34,9 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function GalleryPage() {
-  // @ Vincent - 'd' wil return the date and time when you called it.
-  // so, if you want the date to be included you need to set the 'time' property in the uploadForm
-  // (might not be named time but you get the point) to be 'd'
-  // feel free to message me any questions, but if you spin up the app and look at the console
-  // you'll see what the date (or 'd') is captured as
+/*
+Alright I got it jack ty :)
+ */
   const dd = new Date();
   dd.getDate();
   console.log(dd);
@@ -63,7 +75,7 @@ function GalleryPage() {
       window.alert(error);
       return;
     });
-  }
+  };
 
   return (
     <Grid container>

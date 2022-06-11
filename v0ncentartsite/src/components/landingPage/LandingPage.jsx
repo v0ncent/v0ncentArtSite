@@ -7,7 +7,6 @@ import ContentPage from "../contentPage/ContentPage.jsx";
 import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 
 import Create from "../creatE/creatE";
-import UploadTest from "../UploadTest/UploadTest.jsx";
 
 export default function LandingPage() {
   return (
