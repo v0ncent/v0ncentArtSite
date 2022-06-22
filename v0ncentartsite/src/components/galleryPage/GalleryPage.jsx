@@ -17,7 +17,7 @@ import {
   getOneItem,
   updateOneItem,
   deleteOneItem
-} from "./MongoGetter";
+} from "../../MongoGetter";
 
 // Importing needed MUI components & icon
 import {
@@ -37,14 +37,18 @@ function GalleryPage() {
 /*
 Alright I got it jack ty :)
  */
-  const dd = new Date();
-  dd.getDate();
+  let dd = new Date();
+  let year = dd.getFullYear();
+  let month = dd.getMonth() + 1;
+  let day = dd.getDate();
+
+  dd = month +  '/' + day + '/' + year; 
   console.log(dd);
 
   const [uploadForm, setUploadForm] = useState({
     title: "",
     imageURL: "",
-    datePosted: dd //set field to dick date
+    datePosted: month +  '/' + day + '/' + year, //set field to dick date
   }); 
 
   const [imageData, setImageData] = useState([{}]); //create useState of an empty object to place hold for image data
@@ -75,6 +79,15 @@ Alright I got it jack ty :)
       window.alert(error);
       return;
     });
+    const myFunc = async () => {
+      try {
+        const data = await getAllItems();
+        setImageData(data); //set image data
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    myFunc();
   };
 
   return (

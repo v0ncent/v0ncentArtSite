@@ -1,3 +1,12 @@
+/*
+--MONGO GETTER--
+THESE FUNCTIONS CONNECT TO ROUTES AND CREATE A USABLE FUNCTION IN REACT
+
+basically this is a bridge from backend routes to front end
+ */
+
+//TODO: make this universal for all database tables,(forum,comics,gallery,etc..) <=
+
 import axios from "axios";
 //Get All
 //create axios components

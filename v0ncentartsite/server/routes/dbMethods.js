@@ -51,6 +51,7 @@ recordRoutes.route("/addToGallery").post(function (request, response){
     let myRecord = {
         imageURL: request.body.imageURL,
         title: request.body.title,
+        date: request.body.datePosted,
     };
     getCollection().insertOne(myRecord, function(error,result){
         if (error){
@@ -70,6 +71,7 @@ recordRoutes.route("/update/:id").post(function (request, response){
         $set: {
             imageURL: request.body.imageURL,
             title: request.body.title,
+            date: request.body.datePosted,
         },
     };
 });
