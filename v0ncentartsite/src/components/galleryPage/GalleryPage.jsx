@@ -45,6 +45,7 @@ Alright I got it jack ty :)
   dd = month +  '/' + day + '/' + year; 
   console.log(dd);
 
+  //TODO: FIX THIS SHOWING UP AS NULL IN MONGO
   const [uploadForm, setUploadForm] = useState({
     title: "",
     imageURL: "",
@@ -55,7 +56,7 @@ Alright I got it jack ty :)
 
   useEffect(() => {
     //get image data from mongo
-    const myFunc = async () => {
+    const getAll = async () => {
       try {
         const data = await getAllItems();
         setImageData(data); //set image data
@@ -63,7 +64,7 @@ Alright I got it jack ty :)
         console.log(error);
       }
     };
-    myFunc();
+    getAll();
   }, []);
 
   async function onSubmit(e) {

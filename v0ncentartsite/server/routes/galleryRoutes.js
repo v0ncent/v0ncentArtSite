@@ -1,5 +1,5 @@
 /*  Database methods
-    This file is used to post, query, update, or delete records from database
+    This file is used to post, query, update, or delete records from database table galleryposts
 */
 const express = require("express"); //create express variable that requires express library
 
@@ -63,6 +63,7 @@ recordRoutes.route("/addToGallery").post(function (request, response){
         response.json(result);
     })
 });
+
 //update a record by id
 recordRoutes.route("/update/:id").post(function (request, response){
     getConnection();
