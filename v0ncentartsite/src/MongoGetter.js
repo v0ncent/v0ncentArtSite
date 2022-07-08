@@ -14,7 +14,9 @@ const urlGetAll = "http://localhost:5000/getAll";
 
 // get items function
 const getAll = async ()=> await axios.get(urlGetAll);
-  
+
+//NOTE HERE THAT GETTING ALL WILL PULL ALL INFORMATION FROM DATABASE NOT JUST ONE BUT ALL OF THEM
+//SO BE WARY FOR SURPLUS OF INFORMATION YOU MIGHT HAVE NOT EXPECTED
 const getAllItems = async()=>{
    //define getAllItems Function
     try{
