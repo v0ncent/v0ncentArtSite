@@ -48,7 +48,7 @@ recordRoutes.route("/getAll/:id").get(function (request, response) {
 //add new record to the forum db
 recordRoutes.route("/addToForum").post(function (request, response){
     getConnection();
-    let myRecord = {
+    let myRecord = { //THIS MAY NEED TO BE CHANGED DEPENDING ON FORMS WE UPLOAD TO TABLE <----------------
         imageURL: request.body.imageURL,
         title: request.body.title,
         date: request.body.datePosted,
@@ -69,7 +69,7 @@ recordRoutes.route("/update/:id").post(function (request, response){
     getConnection();
     let myquery = { id_: ObjectId(request.params.id)}
     let update = {
-        $set: {
+        $set: { 
             imageURL: request.body.imageURL,
             title: request.body.title,
             date: request.body.datePosted,

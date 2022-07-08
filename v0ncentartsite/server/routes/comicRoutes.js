@@ -45,10 +45,11 @@ recordRoutes.route("/getAll/:id").get(function (request, response) {
     });
 });
 
+
 //add new record to the comics db
 recordRoutes.route("/addToComics").post(function (request, response){
     getConnection();
-    let myRecord = {
+    let myRecord = { //THIS MAY NEED TO BE CHANGED DEPENDING ON FORMS WE UPLOAD TO TABLE <----------------
         imageURL: request.body.imageURL,
         title: request.body.title,
         date: request.body.datePosted,

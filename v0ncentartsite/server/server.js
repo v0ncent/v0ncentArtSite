@@ -13,14 +13,36 @@ const router = express.Router();
 
 
 //Function for building all routes
+/*
+How this works is pretty self explanitory, we are basically giving our express app multiple routes to use,
+put them all into try catch blocks so if one fails to build only one subsection fails instead of whole database connection. 
+*/
 function buildRoutes(){
   //galleryPage
-  app.use(require("./routes/galleryRoutes"));
-
+  try{
+    app.use(require("./routes/galleryRoutes")); //<-- im getting a warning here, dont give in or it will fuck the whole script
+    console.log("Succesfully built galleryRoutes")
+  } catch (error){
+    console.log(error)
+  }
+  //comicsPage
+  try{
+    app.use(require("./routes/comicRoutes"));
+    console.log("Succesfully built comicRoutes")
+  } catch (error){
+    console.log(error)
+  }
+  //forumPage
+  try{
+    app.use(require("./routes/forumRoutes"));
+    console.log("Successfully built forumRoutes")
+  } catch (error){
+    console.log(error)
+  }
 }
 
 app.listen(port, () => {
-  buildRoutes(); //build express routes
+  buildRoutes(); //build express
   // perform a database connection when server starts
   dbo.connectToServer(function (err) {
     if (err) console.error(err);
