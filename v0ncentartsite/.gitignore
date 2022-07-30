@@ -29,3 +29,6 @@ yarn-error.log*
 
 .idea
 .gitignore
+.env
+
+

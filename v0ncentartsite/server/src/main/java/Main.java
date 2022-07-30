@@ -9,6 +9,6 @@ public class Main{
     }
     public static void main(String[] args){
         onReady();
-        System.out.println("Hello Cunts!");
+        System.out.println(Config.get("TEST"));
     }
 }
