@@ -26,3 +26,6 @@ yarn-error.log*
 ./README2.md
 ./package-lock.json
 ./config.env
+
+.idea
+.gitignore
