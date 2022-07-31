@@ -13,6 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //
 @SpringBootApplication
 public class ServerApplication {
+    private ServerApplication(){
+        //prevent new instantiations of class
+    }
     private static final Logger LOGGER = LoggerFactory.getLogger(ServerApplication.class);
     private static void onReady(){ //method for logging when application is ready
         LOGGER.info("Application Started and Ready");
