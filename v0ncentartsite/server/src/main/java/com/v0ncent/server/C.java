@@ -7,4 +7,5 @@
  */
 package com.v0ncent.server;
 public final class C {
+    public static final ExceptionManager EXCEPTION_MANAGER = new ExceptionManager();
 }

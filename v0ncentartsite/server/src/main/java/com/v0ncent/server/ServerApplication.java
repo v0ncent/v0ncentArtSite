@@ -22,8 +22,7 @@ public class ServerApplication {
             SpringApplication.run(ServerApplication.class, args);
             onReady();
         }catch (Exception e){
-            LOGGER.info(String.format("UH OH: Application failed to start\n%s",e));
-            e.printStackTrace();
+            C.EXCEPTION_MANAGER.handle(e,ServerApplication.class);
         }
     }
 }
