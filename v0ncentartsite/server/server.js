@@ -14,7 +14,7 @@ const router = express.Router();
 
 //Function for building all routes
 /*
-How this works is pretty self explanitory, we are basically giving our express app multiple routes to use,
+How this works is pretty self explanatory, we are basically giving our express app multiple routes to use,
 put them all into try catch blocks so if one fails to build only one subsection fails instead of whole database connection. 
 */
 function buildRoutes() {
