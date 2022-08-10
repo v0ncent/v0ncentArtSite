@@ -53,7 +53,7 @@ function GalleryPage() {
   }
 
   return (
-    <Box sx={{ minHeight: "100vh" }}>
+    <Box>
       <TopNav />
       <Grid container>
         <Grid item xs={12} sx={{ p: 4 }}>

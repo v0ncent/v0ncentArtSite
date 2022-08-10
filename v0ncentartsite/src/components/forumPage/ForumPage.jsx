@@ -5,7 +5,7 @@ import TopNav from "../TopNav/TopNav";
 
 function ForumPage() {
   return (
-    <Box sx={{ minHeight: "100vh" }}>
+    <Box>
       <TopNav />
       <Typography>forumPage</Typography>
     </Box>

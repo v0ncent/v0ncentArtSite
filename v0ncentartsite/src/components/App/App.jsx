@@ -2,20 +2,19 @@
 import "./App.css";
 
 // Import MUI stuff
-import { Box, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 
 // React Imports
 import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Import all pages to route to
+import SwitchSide from "../SwitchSide/SwitchSide";
 import AboutPage from "../aboutPage/AboutPage.jsx";
 import ForumPage from "../forumPage/ForumPage.jsx";
 import ComicsPage from "../comicsPage/ComicsPage.jsx";
 import LandingPage from "../landingPage/LandingPage.jsx";
 import GalleryPage from "../galleryPage/GalleryPage.jsx";
-
-import SwitchSide from "../SwitchSide/SwitchSide";
 
 // Import theme creation tools & font
 import "@fontsource/kalam";
@@ -38,25 +37,25 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Box bgcolor="#000000" sx={{ p: 5 }}>
-        <Paper sx={{ p: 2 }}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/switcher" element={<SwitchSide />} />
+      {/* <Box bgcolor="#000000" sx={{  }}>  <- removing this MAY make the issue of the black box not taking up the full screen better (hopefully) */} 
+      <Paper sx={{ p: 2, border: 50, height: '90vh', borderColor: '#000000'}}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/switcher" element={<SwitchSide />} />
 
-              <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<LandingPage />} />
 
-              <Route path="/forum" element={<ForumPage />} />
+            <Route path="/forum" element={<ForumPage />} />
 
-              <Route path="/about" element={<AboutPage />} />
+            <Route path="/about" element={<AboutPage />} />
 
-              <Route path="/comics" element={<ComicsPage />} />
+            <Route path="/comics" element={<ComicsPage />} />
 
-              <Route path="/gallery" element={<GalleryPage />} />
-            </Routes>
-          </BrowserRouter>
-        </Paper>
-      </Box>
+            <Route path="/gallery" element={<GalleryPage />} />
+          </Routes>
+        </BrowserRouter>
+      </Paper>
+      {/* </Box> */}
     </ThemeProvider>
   );
 }
