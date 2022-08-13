@@ -1,3 +1,10 @@
+/*
+ * --------------------------------------------------------------------------
+ *                   Server Application GalleryTool SubClass
+ * This class is responsible for all posts and query to the gallery db
+ * @author v0ncent
+ * --------------------------------------------------------------------------
+ */
 package com.v0ncent.server.Mongo;
 import com.v0ncent.server.C;
 import com.v0ncent.server.POJO.Gallery;
@@ -8,12 +15,12 @@ import org.springframework.stereotype.Service;
 public class GalleryTool extends MongoTool{
     @Autowired
     private GalleryRepository galleryRepository;
-    @Autowired
+    //
     @Override
     public void getAll() {
         try {
             System.out.println("Getting all....");
-            galleryRepository.findAll()
+            this.galleryRepository.findAll()
                     .forEach(
                             GalleryTool::getGalleryDetails
                     );
@@ -21,11 +28,11 @@ public class GalleryTool extends MongoTool{
             C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
         }
     }
-    @Autowired
+    //
     @Override
     public void createListing() {
         try{
-            galleryRepository.save(
+            this.galleryRepository.save(
                     new Gallery(
                             "3",
                             "Test from tool class",
@@ -34,7 +41,7 @@ public class GalleryTool extends MongoTool{
                             "today"
                     )
             );
-            galleryRepository.save(
+            this.galleryRepository.save(
                     new Gallery(
                             "4",
                             "Test from tool class DOS",
@@ -56,6 +63,7 @@ public class GalleryTool extends MongoTool{
             C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
         }
     }
+    //this is a test method for setting up application
     public static void getGalleryDetails(Gallery item){
         System.out.printf(
                 " Id: -%s-\n Name: -%s-\n Title: -%s-\n ImageURL: -%s-\n DatePosted: -%s-\n",

@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//spring application and tell spring to enable our mongoDB repos with these two annotations
 @SpringBootApplication
 public class ServerApplication {
     @Autowired
@@ -24,9 +23,9 @@ public class ServerApplication {
     }
     @Autowired
     private void runTest(){
-        galleryTool.createListing();
-        galleryTool.getAll();
-        galleryTool.getOne("JAVA SPRING TEST SUBMISSION","this is uploaded from spring app");
+        this.galleryTool.createListing();
+        this.galleryTool.getAll();
+        this.galleryTool.getOne("JAVA SPRING TEST SUBMISSION","this is uploaded from spring app");
     }
     //
     public static void main(String[] args) {
