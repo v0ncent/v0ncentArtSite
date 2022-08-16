@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Optional;
 @Service
 public class GalleryTool{
-    //TODO: ADD UPDATE AND DELETE TO THIS TOOL
     @Autowired
     private GalleryRepository galleryRepository;
     //
@@ -60,5 +59,19 @@ public class GalleryTool{
             C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
         }
         return Optional.empty();
+    }
+    public Gallery updateOne(@NonNull Gallery gallery){
+        try{
+            galleryRepository.save(
+                    gallery
+            );
+            return gallery;
+        }catch (Exception e){
+            C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
+        }
+        return null;
+    }
+    public void deleteOne(@NonNull long id){
+        galleryRepository.deleteById(String.valueOf(id));
     }
 }

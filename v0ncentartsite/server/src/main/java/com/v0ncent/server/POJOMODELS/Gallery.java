@@ -3,7 +3,7 @@
  *                   Server Application Gallery Class
  * This class is the POJO for the gallery page, here the Gallery record is created
  * Whenever an instance of this OBJ is created and none have been submitted to mongo it will
- * create a new db of object name
+ * create a new db of object name (because I messed up the names ;D)
  * @author v0ncent
  * --------------------------------------------------------------------------
  */

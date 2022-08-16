@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -23,20 +22,19 @@ public class GalleryController {
     //
     @GetMapping("/getAllGallery")
     Collection<Gallery> getAllGallery(){
-        LOGGER.info("Getting all...");
         return galleryTool.getAll();
     }
     //
     @GetMapping("/getOneGallery/{id}")
     ResponseEntity<?> getOneGallery(@NonNull @PathVariable Long id){
         Optional<Gallery> galleryOptional = galleryTool.getOne(id);
-        LOGGER.info("Getting one...");
         return galleryOptional.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     //
     @PostMapping("createListingGallery")
-    ResponseEntity<Gallery> createListingGallery(Gallery gallery) throws URISyntaxException {
+    ResponseEntity<Gallery> createListingGallery(@RequestBody Gallery gallery) throws URISyntaxException {
+        LOGGER.info("Request to create new GALLERY Listing: {}",gallery);
         Gallery result = galleryTool.createListing(
                 gallery.getId(),
                 gallery.getName(), //wow, another nice pyramid
@@ -45,5 +43,15 @@ public class GalleryController {
                 gallery.getDatePosted());
         return ResponseEntity.created(new URI("/api/createListingGallery" + result.getId())).body(result);
     }
-    //TODO: Create routes for update and delete once made in tool
+    @PutMapping("/updateOneGallery/{id}")
+    ResponseEntity<Gallery> updateOneGallery(@RequestBody Gallery gallery){
+        LOGGER.info("Request to update GALLERY Listing: {}",gallery);
+        Gallery result = galleryTool.updateOne(gallery);
+        return ResponseEntity.ok().body(result);
+    }
+    @DeleteMapping("/deleteOneGallery/{id}")
+    ResponseEntity<?> deleteOneGallery(@PathVariable Long id){
+        galleryTool.deleteOne(id);
+        return ResponseEntity.ok().build();
+    }
 }

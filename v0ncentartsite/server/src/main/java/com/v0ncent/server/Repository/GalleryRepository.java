@@ -16,8 +16,8 @@ public interface GalleryRepository extends MongoRepository<Gallery,String> {
     @Query("{_id:'?0'}")
     Gallery findOne(long id);
     //
-    @Query(value="{id:'?0'}", fields = "{'name' : 1, 'title' : 1, 'imageURL' : 1, 'datePosted' : 1}")
-    List<Gallery> findAll(long id);
+    @Query(value="{name:'?0'}", fields = "{'id' : 1, 'title' : 1, 'imageURL' : 1, 'datePosted' : 1}")
+    List<Gallery> findAll(String name);
     //
     long count();
 }
