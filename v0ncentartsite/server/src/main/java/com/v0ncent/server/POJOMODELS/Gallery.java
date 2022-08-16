@@ -7,19 +7,16 @@
  * @author v0ncent
  * --------------------------------------------------------------------------
  */
-package com.v0ncent.server.POJO;
+package com.v0ncent.server.POJOMODELS;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 @Document("gallery")
 public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!!!
     @Id
-    private final String id;
+    private final long id;
     //
-    final String name;
-    final String title;
-    final String imageURL;
-    final String datePosted;
-    public Gallery(String id,String name, String title, String imageURL, String datePosted){
+    final String name,title,imageURL,datePosted;
+    public Gallery(long id,String name, String title, String imageURL, String datePosted){
         super();
         this.id = id;
         this.name = name;
@@ -28,7 +25,7 @@ public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!
         this.datePosted = datePosted;
     }
     //getters for object
-    public String getId(){
+    public long getId(){
         return id;
     }
     public String getName() {

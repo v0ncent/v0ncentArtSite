@@ -6,68 +6,59 @@
  * --------------------------------------------------------------------------
  */
 package com.v0ncent.server.Mongo;
+import com.mongodb.lang.NonNull;
 import com.v0ncent.server.C;
-import com.v0ncent.server.POJO.Gallery;
+import com.v0ncent.server.POJOMODELS.Gallery;
 import com.v0ncent.server.Repository.GalleryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Collection;
+import java.util.Optional;
 @Service
-public class GalleryTool extends MongoTool{
+public class GalleryTool{
+    //TODO: ADD UPDATE AND DELETE TO THIS TOOL
     @Autowired
     private GalleryRepository galleryRepository;
     //
-    @Override
-    public void getAll() {
+    public Collection<Gallery> getAll() {
         try {
-            System.out.println("Getting all....");
-            this.galleryRepository.findAll()
-                    .forEach(
-                            GalleryTool::getGalleryDetails
-                    );
+            return this.galleryRepository.findAll();
         } catch (Exception e){
             C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
         }
+        return null;
     }
     //
-    @Override
-    public void createListing() {
+    public Gallery createListing(@NonNull long id,
+                                 @NonNull String name,
+                                 @NonNull String title,
+                                 @NonNull String imageURL,
+                                 @NonNull String datePosted) {
         try{
             this.galleryRepository.save(
                     new Gallery(
-                            "3",
-                            "Test from tool class",
-                            "im from a tool class!",
-                            "penis.org",
-                            "today"
-                    )
-            );
-            this.galleryRepository.save(
-                    new Gallery(
-                            "4",
-                            "Test from tool class DOS",
-                            "im from a tool class! DOS",
-                            "YEAAAAAAAAAAAAAAAAA",
-                            "today"
-                    )
-            );
+                            id,
+                            name,
+                            title,   //this makes a nice pyramid
+                            imageURL,
+                            datePosted));
+            return new Gallery(
+                    id,
+                    name,
+                    title,   //this makes a nice pyramid x2
+                    imageURL,
+                    datePosted);
         }catch (Exception e){
             C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
         }
+        return null;
     }
-    public void getOne(String name, String title) {
-        System.out.println("Getting one.....");
+    public Optional<Gallery> getOne(@NonNull long id) {
         try {
-            Gallery item = galleryRepository.findByNameAndTitle(name,title);
-            getGalleryDetails(item);
+            return Optional.ofNullable(galleryRepository.findOne(id));
         }catch (Exception e){
             C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
         }
-    }
-    //this is a test method for setting up application
-    public static void getGalleryDetails(Gallery item){
-        System.out.printf(
-                " Id: -%s-\n Name: -%s-\n Title: -%s-\n ImageURL: -%s-\n DatePosted: -%s-\n",
-                item.getId(),item.getName(),item.getTitle(),item.getImageURL(),item.getDatePosted()
-        );
+        return Optional.empty();
     }
 }
