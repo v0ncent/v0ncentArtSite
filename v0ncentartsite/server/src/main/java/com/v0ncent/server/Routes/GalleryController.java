@@ -1,3 +1,10 @@
+/*
+ * --------------------------------------------------------------------------
+ *                   Server Application GalleryController Class
+ * This class is responsible for hosting all /api gallery routes for db manipulation
+ * @author v0ncent
+ * --------------------------------------------------------------------------
+ */
 package com.v0ncent.server.Routes;
 //
 import com.mongodb.lang.NonNull;

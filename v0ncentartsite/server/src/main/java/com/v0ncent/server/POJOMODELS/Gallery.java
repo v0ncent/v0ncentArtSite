@@ -2,7 +2,7 @@
  * --------------------------------------------------------------------------
  *                   Server Application Gallery Class
  * This class is the POJO for the gallery page, here the Gallery record is created
- * Whenever an instance of this OBJ is created and none have been submitted to mongo it will
+ * Whenever an instance of this OBJ is created and if none have been submitted to mongo it will
  * create a new db of object name (because I messed up the names ;D)
  * @author v0ncent
  * --------------------------------------------------------------------------
@@ -25,19 +25,10 @@ public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!
         this.datePosted = datePosted;
     }
     //getters for object
+    /**
+     * @return returns id of Object instance.
+     * */
     public long getId(){
         return id;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getDatePosted() {
-        return datePosted;
-    }
-    public String getImageURL() {
-        return imageURL;
-    }
-    public String getTitle() {
-        return title;
     }
 }
