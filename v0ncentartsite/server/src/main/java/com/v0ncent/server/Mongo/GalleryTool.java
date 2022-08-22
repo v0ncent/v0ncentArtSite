@@ -28,25 +28,10 @@ public class GalleryTool{
         return null;
     }
     //
-    public Gallery createListing(@NonNull long id,
-                                 @NonNull String name,
-                                 @NonNull String title,
-                                 @NonNull String imageURL,
-                                 @NonNull String datePosted) {
+    public Gallery createListing(@NonNull Gallery gallery) {
         try{
-            this.galleryRepository.save(
-                    new Gallery(
-                            id,
-                            name,
-                            title,   //this makes a nice pyramid
-                            imageURL,
-                            datePosted));
-            return new Gallery(
-                    id,
-                    name,
-                    title,   //this makes a nice pyramid x2
-                    imageURL,
-                    datePosted);
+            this.galleryRepository.save(gallery);
+            return gallery;
         }catch (Exception e){
             C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
         }

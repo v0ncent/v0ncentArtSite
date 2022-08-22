@@ -3,6 +3,7 @@ package com.v0ncent.server.Routes;
 import com.mongodb.lang.NonNull;
 import com.v0ncent.server.Mongo.GalleryTool;
 import com.v0ncent.server.POJOMODELS.Gallery;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +33,14 @@ public class GalleryController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     //
-    @PostMapping("createListingGallery")
-    ResponseEntity<Gallery> createListingGallery(@RequestBody Gallery gallery) throws URISyntaxException {
+    @PostMapping("/createListingGallery")
+    ResponseEntity<Gallery> createListingGallery(@Valid @RequestBody Gallery gallery) throws URISyntaxException {
         LOGGER.info("Request to create new GALLERY Listing: {}",gallery);
-        Gallery result = galleryTool.createListing(
-                gallery.getId(),
-                gallery.getName(), //wow, another nice pyramid
-                gallery.getTitle(),
-                gallery.getImageURL(),
-                gallery.getDatePosted());
+        Gallery result = galleryTool.createListing(gallery);
         return ResponseEntity.created(new URI("/api/createListingGallery" + result.getId())).body(result);
     }
     @PutMapping("/updateOneGallery/{id}")
-    ResponseEntity<Gallery> updateOneGallery(@RequestBody Gallery gallery){
+    ResponseEntity<Gallery> updateOneGallery(@Valid @RequestBody Gallery gallery){
         LOGGER.info("Request to update GALLERY Listing: {}",gallery);
         Gallery result = galleryTool.updateOne(gallery);
         return ResponseEntity.ok().body(result);
