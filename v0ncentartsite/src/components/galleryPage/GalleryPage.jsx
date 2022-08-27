@@ -4,21 +4,6 @@ import GalleryItems from "./GalleryItems";
 import FileBase64 from "react-file-base64";
 import { useState, useEffect } from "react";
 
-/*
-Dear @Jack, <-----
-I created MongoGetter,
-This is where pretty much everything needed to interact with
-mongo is, just export the functions from it and hopefully it
-works and if it doesnt fuck me.
- */
-import { 
-  getAllItems,  
-  //these arent used but they are there to be used
-  getOneItem,
-  updateOneItem,
-  deleteOneItem
-} from "../../MongoGetter";
-
 // Importing needed MUI components & icon
 import {
   Box,
@@ -34,16 +19,13 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function GalleryPage() {
-/*
-Alright I got it jack ty :)
- */
+
   let dd = new Date();
   let year = dd.getFullYear();
   let month = dd.getMonth() + 1;
   let day = dd.getDate();
 
   dd = month +  '/' + day + '/' + year; 
-  console.log(dd);
 
   //TODO: FIX THIS SHOWING UP AS NULL IN MONGO
   const [uploadForm, setUploadForm] = useState({
@@ -54,23 +36,23 @@ Alright I got it jack ty :)
 
   const [imageData, setImageData] = useState([{}]); //create useState of an empty object to place hold for image data
 
-  useEffect(() => {
-    //get image data from mongo
-    const getAll = async () => {
-      try {
-        const data = await getAllItems();
-        setImageData(data); //set image data
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getAll();
-  }, []);
+  // useEffect(() => {
+  //   //get image data from mongo
+  //   const getAll = async () => {
+  //     try {
+  //       const data = await getAllItems();
+  //       setImageData(data); //set image data
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getAll();
+  // }, []);
 
   async function onSubmit(e) {
     e.preventDefault();
     const newImage = { ...uploadForm };
-    await fetch("http://localhost:5000/addToGallery", {
+    await fetch("/api/createListingGallery", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,15 +62,15 @@ Alright I got it jack ty :)
       window.alert(error);
       return;
     });
-    const myFunc = async () => {
-      try {
-        const data = await getAllItems();
-        setImageData(data); //set image data
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    myFunc();
+    // const myFunc = async () => {
+    //   try {
+    //     const data = await getAllItems();
+    //     setImageData(data); //set image data
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // myFunc();
   };
 
   return (

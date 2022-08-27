@@ -9,6 +9,7 @@ package com.v0ncent.server.Routes;
 //
 import com.mongodb.lang.NonNull;
 import com.v0ncent.server.Mongo.GalleryTool;
+import com.v0ncent.server.Mongo.SequenceGeneratorService;
 import com.v0ncent.server.POJOMODELS.Gallery;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -27,6 +28,8 @@ public class GalleryController {
     private static final Logger LOGGER = LoggerFactory.getLogger(GalleryController.class);
     @Autowired //<--- field inject these nuts lmfao. No but for real I rly don't care for this warning, but it won't let me ignore it >:d
     private GalleryTool galleryTool;
+    @Autowired
+    private SequenceGeneratorService service; //<-- i wish I could remove this warning on autowired :(
     //
     @GetMapping("/getAllGallery")
     Collection<Gallery> getAllGallery(){
@@ -43,6 +46,7 @@ public class GalleryController {
     @PostMapping("/createListingGallery")
     ResponseEntity<Gallery> createListingGallery(@Valid @RequestBody Gallery gallery) throws URISyntaxException {
         LOGGER.info("Request to create new GALLERY Listing: {}",gallery);
+        gallery.setId(service.getSequence(Gallery.SEQUENCE_NAME)); //this is basically to auto increment with mongoDB kinda absurd over engineering.
         Gallery result = galleryTool.createListing(gallery);
         return ResponseEntity.created(new URI("/api/createListingGallery" + result.getId())).body(result);
     }

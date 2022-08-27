@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
-public interface GalleryRepository extends MongoRepository<Gallery,String> {
+public interface GalleryRepository extends MongoRepository<Gallery,Integer> {
     /**
      * Finds one document from gallery DB.
      * @param id id of document to be found in gallery DB.

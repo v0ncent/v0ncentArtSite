@@ -1,7 +1,7 @@
 /*
  * --------------------------------------------------------------------------
  *                   Server Application GalleryTool Class
- * This class is responsible for all posts and query to the gallery db
+ * This class is responsible for all posts and query to the gallery table.
  * @author v0ncent
  * --------------------------------------------------------------------------
  */
@@ -79,6 +79,6 @@ public class GalleryTool{
      * @param id id of document to be deleted from gallery DB.
      * */
     public void deleteOne(@NonNull long id){
-        galleryRepository.deleteById(String.valueOf(id));
+        galleryRepository.deleteById((int) id);
     }
 }

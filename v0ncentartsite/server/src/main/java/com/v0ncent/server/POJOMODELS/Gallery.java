@@ -9,13 +9,16 @@
  */
 package com.v0ncent.server.POJOMODELS;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 @Document("gallery")
 public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!!!
     @Id
-    private final long id;
+    private long id;
     //
     final String name,title,imageURL,datePosted;
+    @Transient
+    public static final String SEQUENCE_NAME="gallery_sequence"; // to auto increment documents we need to define this documents specific sequence
     public Gallery(long id,String name, String title, String imageURL, String datePosted){
         super();
         this.id = id;
@@ -30,5 +33,13 @@ public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!
      * */
     public long getId(){
         return id;
+    }
+    //setters for object
+    /**
+     * Sets the current object Instance id.
+     * @param id updated id
+     * */
+    public void setId(int id){
+        this.id = id;
     }
 }
