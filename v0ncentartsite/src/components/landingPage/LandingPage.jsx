@@ -7,9 +7,8 @@ import ContentPage from "../contentPage/ContentPage.jsx";
 import AnnouncementsPage from "../announcementsPage/announcementsPage.jsx";
 
 import Create from "../creatE/creatE";
-import UploadTest from "../UploadTest/UploadTest.jsx";
 
-function LandingPage() {
+export default function LandingPage() {
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -17,7 +16,6 @@ function LandingPage() {
         <Box sx={{ p: 1, border: 1, mt: 2 }}>
           <AnnouncementsPage />
           <Create />
-          <UploadTest />
         </Box>
         <br />
         <Box sx={{ p: 1, border: 1 }}>
@@ -27,5 +25,3 @@ function LandingPage() {
     </Grid>
   );
 }
-
-export default LandingPage;
