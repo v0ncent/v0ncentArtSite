@@ -16,13 +16,12 @@ public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!
     @Id
     private long id;
     //
-    final String name,title,imageURL,datePosted;
+    final String title,imageURL,datePosted;
     @Transient
     public static final String SEQUENCE_NAME="gallery_sequence"; // to auto increment documents we need to define this documents specific sequence
-    public Gallery(long id,String name, String title, String imageURL, String datePosted){
+    public Gallery(long id, String title, String imageURL, String datePosted){
         super();
         this.id = id;
-        this.name = name;
         this.title = title;
         this.imageURL = imageURL;
         this.datePosted = datePosted;
