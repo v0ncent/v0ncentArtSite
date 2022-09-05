@@ -27,7 +27,9 @@ But basically this is supposed to give you easy access to the data.
 */
 import {
   CREATE_LISTING_ROUTE,
-  getAll
+  deleteOne,
+  getAll,
+  getOne
 } from "./GalleryMongo"
 function GalleryPage() {
 
@@ -61,9 +63,11 @@ function GalleryPage() {
     });
     if (uploadForm.imageURL != null) {
       try {
-        //TESTING GET ALL FUNCTION
-        console.log(await getAll())
-
+        //TESTING FUNCTIONS FROM GALLERY MONGO
+        console.log(await getAll());
+        console.log(await getOne(1));
+        await deleteOne(2);
+        //
         setUploadForm({title: "", imageURL: "", datePosted: dd});
         console.log("poop", uploadForm);
       } catch (error) {
