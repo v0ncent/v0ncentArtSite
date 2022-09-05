@@ -16,7 +16,10 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+//GalleryMongo file imports
+import {
+  CREATE_LISTING_ROUTE,
+} from "./GalleryMongo"
 function GalleryPage() {
 
   let dd = new Date();
@@ -37,7 +40,7 @@ function GalleryPage() {
 
     const newImage = { ...uploadForm };
 
-    await fetch("api/createListingGallery", {
+    await fetch(CREATE_LISTING_ROUTE, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

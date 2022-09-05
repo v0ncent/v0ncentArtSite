@@ -52,7 +52,7 @@ public class GalleryTool{
      * */
     public Optional<Gallery> getOne(@NonNull long id) {
         try {
-            return Optional.ofNullable(galleryRepository.findOne(id));
+            return galleryRepository.findById(id);
         }catch (Exception e){
             C.EXCEPTION_MANAGER.handle(e,GalleryTool.class);
         }
@@ -79,6 +79,6 @@ public class GalleryTool{
      * @param id id of document to be deleted from gallery DB.
      * */
     public void deleteOne(@NonNull long id){
-        galleryRepository.deleteById((int) id);
+        galleryRepository.deleteById(id);
     }
 }
