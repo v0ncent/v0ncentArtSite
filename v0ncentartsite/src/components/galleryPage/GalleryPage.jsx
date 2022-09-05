@@ -17,8 +17,17 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 //GalleryMongo file imports
+/*
+DEAR JACK
+The below imports are from a file called Gallery Mongo,
+This file basically houses all functions needed for querying gallery table in site db,
+it also houses all the routes as constants.
+check it out and you should see what I mean.
+But basically this is supposed to give you easy access to the data. 
+*/
 import {
   CREATE_LISTING_ROUTE,
+  getAll
 } from "./GalleryMongo"
 function GalleryPage() {
 
@@ -52,6 +61,9 @@ function GalleryPage() {
     });
     if (uploadForm.imageURL != null) {
       try {
+        //TESTING GET ALL FUNCTION
+        console.log(await getAll())
+
         setUploadForm({title: "", imageURL: "", datePosted: dd});
         console.log("poop", uploadForm);
       } catch (error) {
