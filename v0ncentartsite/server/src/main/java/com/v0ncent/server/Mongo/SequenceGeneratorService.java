@@ -8,7 +8,6 @@
  */
 package com.v0ncent.server.Mongo;
 import com.v0ncent.server.POJOMODELS.DBSequence;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Update;
@@ -18,8 +17,10 @@ import java.util.Objects;
 import static org.springframework.data.mongodb.core.FindAndModifyOptions.options;
 @Service
 public class SequenceGeneratorService {
-    @Autowired
-    private MongoOperations mongoOperations; //<-- THIS IS THROWING AN ERROR BUT WORKS COMPLETELY FINE SO PLEASE IGNORE IT
+    private final MongoOperations mongoOperations; //<-- THIS IS THROWING AN ERROR BUT WORKS COMPLETELY FINE SO PLEASE IGNORE IT
+    public SequenceGeneratorService(MongoOperations mongoOperations){
+        this.mongoOperations = mongoOperations;
+    }
     /**
      * Gets the current sequence number for given sequence name.
      * @param sequenceName name of table sequence to get sequence of (number of documents basically)

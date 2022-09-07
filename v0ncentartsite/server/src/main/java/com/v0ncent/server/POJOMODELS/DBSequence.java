@@ -21,4 +21,12 @@ public final class DBSequence {
     @Id
     private String id;
     private int seq; //sequence
+    /**
+     * getter for Sequence integer of object instance
+     * @return returns the current sequence of object instance
+     * */
+    public int getSeq() {
+        return seq;
+    }
 }
+

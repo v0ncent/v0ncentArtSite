@@ -1,8 +1,7 @@
 // Importing React, needed components, and FileBase64 to convert an image to url
 import TopNav from "../TopNav/TopNav";
-import GalleryItems from "./GalleryItems";
 import FileBase64 from "react-file-base64";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // Importing needed MUI components & icon
 import {
@@ -17,7 +16,21 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+//GalleryMongo file imports
+/*
+DEAR JACK
+The below imports are from a file called Gallery Mongo,
+This file basically houses all functions needed for querying gallery table in site db,
+it also houses all the routes as constants.
+check it out and you should see what I mean.
+But basically this is supposed to give you easy access to the data. 
+*/
+import {
+  CREATE_LISTING_ROUTE,
+  deleteOne,
+  getAll,
+  getOne
+} from "./GalleryMongo"
 function GalleryPage() {
 
   let dd = new Date();
@@ -27,10 +40,10 @@ function GalleryPage() {
 
   dd = month +  '/' + day + '/' + year; 
 
-  //TODO: FIX THIS SHOWING UP AS NULL IN MONGO
   const [uploadForm, setUploadForm] = useState({
     title: "",
     imageURL: "",
+    datePosted: dd, //<-- this shit be workin now hehe
   });
 
   async function onSubmit(e) {
@@ -38,7 +51,7 @@ function GalleryPage() {
 
     const newImage = { ...uploadForm };
 
-    await fetch("http://localhost:5000/addToGallery", {
+    await fetch(CREATE_LISTING_ROUTE, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +63,12 @@ function GalleryPage() {
     });
     if (uploadForm.imageURL != null) {
       try {
-        setUploadForm({ title: "", imageURL: "" });
+        //TESTING FUNCTIONS FROM GALLERY MONGO
+        console.log(await getAll());
+        console.log(await getOne(1));
+        await deleteOne(2);
+        //
+        setUploadForm({title: "", imageURL: "", datePosted: dd});
         console.log("poop", uploadForm);
       } catch (error) {
         window.alert(error);
@@ -100,7 +118,7 @@ function GalleryPage() {
                     type="image"
                     multiple={false}
                     onDone={({ base64 }) =>
-                      setUploadForm({ ...uploadForm, imageURL: base64 })
+                      setUploadForm({ ...uploadForm, imageURL: base64, datePosted: dd })
                     }
                   />
                 </Grid>
@@ -120,17 +138,6 @@ function GalleryPage() {
             </AccordionDetails>
           </Accordion>
         </Paper>
-      </Grid>
-
-      {/*test rendering image data basically renders the array of all data so to access specific
-        indexes use like image[0] or something idk how react works lol */}
-
-      <Grid item xs={12}>
-        <Grid item xs={4} sx={{ pt: 5 }}>
-          {imageData.map((image, i) => {
-            return GalleryItems(image, i);
-          })}
-        </Grid>
       </Grid>
     </Grid>
   );

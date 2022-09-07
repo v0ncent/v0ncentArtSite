@@ -16,13 +16,12 @@ public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!
     @Id
     private long id;
     //
-    final String name,title,imageURL,datePosted;
+    String title,imageURL,datePosted;
     @Transient
     public static final String SEQUENCE_NAME="gallery_sequence"; // to auto increment documents we need to define this documents specific sequence
-    public Gallery(long id,String name, String title, String imageURL, String datePosted){
+    public Gallery(long id, String title, String imageURL, String datePosted){
         super();
         this.id = id;
-        this.name = name;
         this.title = title;
         this.imageURL = imageURL;
         this.datePosted = datePosted;
@@ -34,6 +33,15 @@ public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!
     public long getId(){
         return id;
     }
+    public String getTitle(){
+        return title;
+    }
+    public String getImageURL(){
+        return imageURL;
+    }
+    public String getDatePosted(){
+        return datePosted;
+    }
     //setters for object
     /**
      * Sets the current object Instance id.
@@ -41,5 +49,14 @@ public class Gallery { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!
      * */
     public void setId(int id){
         this.id = id;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setImageURL(String imageURL){
+        this.imageURL = imageURL;
+    }
+    public void setDatePosted(String datePosted){
+        this.datePosted = datePosted;
     }
 }
