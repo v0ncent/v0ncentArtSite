@@ -17,7 +17,6 @@ public class ServerApplication {
     private static void onReady(){ //method for logging when application is ready
         LOGGER.info("Application Started and Ready");
     }
-    //
     public static void main(String[] args) {
         try{
             SpringApplication.run(ServerApplication.class, args);
