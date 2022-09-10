@@ -5,7 +5,7 @@
  * @author v0ncent
  * --------------------------------------------------------------------------
  */
-package com.v0ncent.server.Repository;
+package com.v0ncent.server.Repositories;
 import com.v0ncent.server.POJOMODELS.Gallery;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
