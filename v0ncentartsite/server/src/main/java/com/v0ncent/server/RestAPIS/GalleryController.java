@@ -5,11 +5,11 @@
  * @author v0ncent
  * --------------------------------------------------------------------------
  */
-package com.v0ncent.server.Routes;
+package com.v0ncent.server.RestAPIS;
 //
 import com.mongodb.lang.NonNull;
-import com.v0ncent.server.Mongo.GalleryTool;
-import com.v0ncent.server.Mongo.SequenceGeneratorService;
+import com.v0ncent.server.MongoServices.GalleryTool;
+import com.v0ncent.server.MongoServices.SequenceGeneratorService;
 import com.v0ncent.server.POJOMODELS.Gallery;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;

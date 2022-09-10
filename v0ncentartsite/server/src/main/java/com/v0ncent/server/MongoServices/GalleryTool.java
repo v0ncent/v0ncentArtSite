@@ -5,11 +5,11 @@
  * @author v0ncent
  * --------------------------------------------------------------------------
  */
-package com.v0ncent.server.Mongo;
+package com.v0ncent.server.MongoServices;
 import com.mongodb.lang.NonNull;
 import com.v0ncent.server.C;
 import com.v0ncent.server.POJOMODELS.Gallery;
-import com.v0ncent.server.Repository.GalleryRepository;
+import com.v0ncent.server.Repositories.GalleryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Collection;

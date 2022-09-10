@@ -6,7 +6,7 @@
  * @Author v0ncent
  * --------------------------------------------------------------------------
  */
-package com.v0ncent.server.Mongo;
+package com.v0ncent.server.MongoServices;
 import com.v0ncent.server.POJOMODELS.DBSequence;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
