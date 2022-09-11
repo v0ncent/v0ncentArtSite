@@ -23,7 +23,8 @@ The below imports are from a file called Gallery Mongo,
 This file basically houses all functions needed for querying gallery table in site db,
 it also houses all the routes as constants.
 check it out and you should see what I mean.
-But basically this is supposed to give you easy access to the data. 
+The purpose of this file is to act as a handshake from the backend to the front end and
+supposed to give you easy access to the data in a easy to manipulate form.
 */
 import {
   CREATE_LISTING_ROUTE,
