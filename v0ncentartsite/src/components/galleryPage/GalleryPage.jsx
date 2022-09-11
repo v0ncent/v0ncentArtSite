@@ -26,8 +26,8 @@ check it out and you should see what I mean.
 The purpose of this file is to act as a handshake from the backend to the front end and
 supposed to give you easy access to the data in a easy to manipulate form.
 */
-import {
-  CREATE_LISTING_ROUTE,
+import { 
+  CREATE_LISTING_ROUTE, //<------- import gallery mongo data
   deleteOne,
   getAll,
   getOne
