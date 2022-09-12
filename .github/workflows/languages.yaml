@@ -16,7 +16,6 @@ jobs:
         with:
           filename: metrics.plugin.languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
-          base: ""
           template: repository
           repo: v0ncentArtSite
           plugin_languages: yes
