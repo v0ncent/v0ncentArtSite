@@ -3,6 +3,6 @@
 
 Hello and Welcome to the Passion project of v0ncent and ThirteenHelens
 
----WE are Currently Still Developing This Project so No Version Is yet to Go Live But Stay Tuned!---
+---We are still in early development with this project so no version has yet to go live, but stay tuned!---
 
 <img align="center" src="/metrics.plugin.contributors.contributions.svg" alt="Metrics" width="550"><img align="center" src="/metrics.plugin.languages.svg" alt="Metrics" width="450">
