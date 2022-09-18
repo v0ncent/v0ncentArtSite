@@ -80,7 +80,7 @@ function GalleryPage() {
   useEffect( () => { 
     getAll() //you would not beleive how long it took me to figure out how to do this lmfao
     .then(data => console.log(data))
-  })
+  },[])
 
   return (
     <Grid container>
