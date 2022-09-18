@@ -79,7 +79,7 @@ function GalleryPage() {
   //using a use effect so whenever component is rendered it logs all data in console
   useEffect( () => { 
     getAll() //you would not beleive how long it took me to figure out how to do this lmfao
-    .then(data => console.log(data))
+    .then(data => console.log("All data in Gallery: ",data))
   },[])
 
   return (
