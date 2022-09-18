@@ -87,7 +87,6 @@ function GalleryPage() {
       </Grid>
 
       <Grid item xs={12} sx={{ p: 4 }}>
-        {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
         <Typography variant="h2">Gallery Vincent Drawing</Typography>
       </Grid>
 
