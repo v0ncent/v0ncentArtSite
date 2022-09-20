@@ -14,6 +14,7 @@ const getAll = async () => {
         await fetch(GET_ALL_ROUTE)
         .then(response => response.json())
         .then(data => all.push(data))
+        console.log("All data recieved from backend: ",all)
         return all
 }
 /**
@@ -26,6 +27,7 @@ const getOne = async (id:number) => {
         await fetch(GET_ONE_ROUTE + id)
         .then(response => response.json())
         .then (data =>  one = data)
+        console.log("Recieved one document from backend: ", one)
         return one
 }
 /**
