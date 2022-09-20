@@ -1,7 +1,7 @@
 // Importing React, needed components, and FileBase64 to convert an image to url
 import TopNav from "../TopNav/TopNav";
 import FileBase64 from "react-file-base64";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Importing needed MUI components & icon
 import {
@@ -64,13 +64,8 @@ function GalleryPage() {
     });
     if (uploadForm.imageURL != null) {
       try {
-        //TESTING FUNCTIONS FROM GALLERY MONGO
-        console.log(await getAll());
-        console.log(await getOne(1));
-        await deleteOne(2);
-        //
         setUploadForm({title: "", imageURL: "", datePosted: dd});
-        console.log("poop", uploadForm);
+        console.log("FRONTEND Sending: ", uploadForm);
       } catch (error) {
         window.alert(error);
         return;
@@ -80,6 +75,12 @@ function GalleryPage() {
     }
   }
 
+  //----REMEMBER TO DELETE THIS ONCE GALLERY IS COMPLETED----
+  //using a use effect so whenever component is rendered it logs all data in console
+  useEffect( () => { 
+    getAll() //you would not beleive how long it took me to figure out how to do this lmfao
+  },[])
+
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -87,7 +88,6 @@ function GalleryPage() {
       </Grid>
 
       <Grid item xs={12} sx={{ p: 4 }}>
-        {/* TODO: add head title for gallery page called "The Gallery" (ill draw this) */}
         <Typography variant="h2">Gallery Vincent Drawing</Typography>
       </Grid>
 
