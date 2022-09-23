@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.Optional;
 @Service
-public class GalleryTool{
+public class GalleryTool implements ServiceTemplate<Gallery>{
     @Autowired
     private GalleryRepository galleryRepository; //autowire repository, it malds at field injection, but it works completely fine so ignore.
     /**
