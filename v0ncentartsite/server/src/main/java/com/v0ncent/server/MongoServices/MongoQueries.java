@@ -1,3 +1,10 @@
+/*
+ * --------------------------------------------------------------------------
+ *                   Server Application MongoQueries Abstract Parent Class
+ * This class is responsible for all posts and query to any table in the MongoDB
+ * @author v0ncent
+ * --------------------------------------------------------------------------
+ */
 package com.v0ncent.server.MongoServices;
 import com.mongodb.lang.NonNull;
 import com.v0ncent.server.C;

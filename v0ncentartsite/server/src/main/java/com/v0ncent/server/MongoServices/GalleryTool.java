@@ -1,7 +1,8 @@
 /*
  * --------------------------------------------------------------------------
- *                   Server Application GalleryTool Class
- * This class is responsible for all posts and query to the gallery table.
+ *                   Server Application GalleryTool Child Class
+ * This class is responsible for all posts and query to the gallery table
+ * utilizing the parent MongoQueries.
  * @author v0ncent
  * --------------------------------------------------------------------------
  */
