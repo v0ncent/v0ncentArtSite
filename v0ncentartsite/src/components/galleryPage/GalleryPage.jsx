@@ -45,6 +45,7 @@ function GalleryPage() {
     title: "",
     imageURL: "",
     datePosted: dd, //<-- this shit be workin now hehe
+    description: "", // Needs to be filled with user input
   });
 
   async function onSubmit(e) {
