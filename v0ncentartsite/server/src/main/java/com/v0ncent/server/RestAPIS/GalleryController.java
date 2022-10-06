@@ -26,7 +26,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public final class GalleryController {
     private static final Logger LOGGER = LoggerFactory.getLogger(GalleryController.class);
-    @Autowired //<--- field inject these nuts lmfao. No but for real I rly don't care for this warning, but it won't let me ignore it >:d
+    @Autowired
     private GalleryTool galleryTool;
     @Autowired
     private SequenceGeneratorService service; //<-- i wish I could remove this warning on autowired :(

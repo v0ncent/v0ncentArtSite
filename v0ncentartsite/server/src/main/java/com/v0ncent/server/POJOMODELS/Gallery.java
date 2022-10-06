@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 @Document("gallery")
-public class Gallery extends Model { //DO NOT CONVERT THIS TO A RECORD IT WILL FUCK THE APP!!!!!
+public class Gallery extends Model { //DO NOT CONVERT THIS TO A RECORD IT WILL F THE APP!!!!!
     @Id
     private long id;
     //
